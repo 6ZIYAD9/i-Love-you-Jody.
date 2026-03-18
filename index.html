@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إلى أميرتي جودي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Amiri:ital@1&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffc0cb; 
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Amiri', serif;
+        }
+
+        /* عناصر الخلفية - الصور الحقيقية */
+        .background-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating {
+            position: absolute;
+            animation: float 6s infinite ease-in-out;
+            /* لضمان عدم تمدد الصور بشكل مشوه */
+            object-fit: contain; 
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+        }
+
+        /* الظرف والرسالة */
+        .envelope-wrapper {
+            position: relative;
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        .envelope {
+            position: relative;
+            width: 320px;
+            height: 220px;
+            background: #fff0f5;
+            border: 2px solid #ff69b4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            z-index: 2;
+            border-left: 160px solid transparent;
+            border-right: 160px solid transparent;
+            border-top: 110px solid #ffdae9;
+            transform-origin: top;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .envelope-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4rem;
+            color: #d63384;
+            z-index: 7;
+            margin-bottom: 10px;
+        }
+
+        .heart-seal {
+            font-size: 35px;
+            color: #ff0000;
+            z-index: 5;
+        }
+
+        .letter {
+            position: absolute;
+            width: 320px;
+            padding: 50px 20px;
+            background: #fff;
+            border: 15px solid transparent;
+            /* زخرفة فيكتورية للحواف */
+            border-image: url('https://www.transparentpng.com/download/vintage-border/vintage-border-png-images-21.png') 30 stretch;
+            text-align: center;
+            display: none;
+            z-index: 10;
+            box-shadow: 0 0 50px rgba(0,0,0,0.2);
+            animation: slideUp 1s forwards;
+            top: -100px;
+            right: -15px;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .letter h2 { color: #d63384; margin-bottom: 15px; font-size: 1.6rem; }
+        .letter p { font-size: 1.2rem; line-height: 1.8; color: #444; font-weight: bold; }
+
+        .envelope-wrapper.open .envelope::before { transform: rotateX(180deg); z-index: 0; }
+        .envelope-wrapper.open .letter { display: block; }
+        .envelope-wrapper.open .envelope-text, .envelope-wrapper.open .heart-seal { visibility: hidden; }
+
+    </style>
+</head>
+<body>
+
+    <div class="background-elements">
+        <span class="floating" style="left: 10%; top: 30%; font-size: 50px;">❤️</span>
+        <span class="floating" style="right: 10%; top: 20%; font-size: 60px;">❤️</span>
+        <span class="floating" style="left: 45%; top: 10%; font-size: 30px;">💖</span>
+
+        <img src="hellokitty.png.png" class="floating" style="right: 5%; bottom: 10%; width: 180px;" alt="Hello Kitty">
+
+         <img src="bubble.png.png" class="floating" style="left: 5%; bottom: 10%; width: 180px;" alt="bubble">
+        
+        <img src="hello.png.png" class="floating" style="left: 5%; top: 5%; width: 200px;" alt="hello">
+
+         <img src="bubbles.png.png" class="floating" style="right: 5%; top: 5%; width: 200px;" alt="Bubbles">
+        
+        <img src="cute.png.png" class="floating" style="left: 30%; bottom: 3%; width: 125px; opacity: 0.8;" alt="cute">
+
+        <img src="bobo2.png.png" class="floating" style="right: 30%; top: 30%; width: 130px; opacity: 0.8;" alt="bobo2">
+    
+    </div>
+
+    <div class="envelope-wrapper" onclick="openLetter()">
+        <div class="envelope">
+            <div class="envelope-text">My Princess</div>
+            <div class="heart-seal">❤️</div>
+        </div>
+        
+        <div class="letter">
+            <h2>إلى اجمل أميرة  </h2>
+            <p>
+             كل عام وانتي عيدي وكل سنة وانتي فرحتي
+               عساني لا انحرم من صوتك وشفوفتك وضحكت ياأغلاهم ياأجملهم  <br>
+         جعل عمرك طويل ويديم حبي لك <br>
+               
+ فأنتِي وحدكِي من بالحّبِ يسكُنني
+وأنتِي أجمل ما ضمَّتهُ أقداري
+وأنتِي أروعُ خلقِ اللهِ في نظري
+وأنتِي عشقي بإعلاني وإسراري
+            </p>
+        </div>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="you thinking of him _ her.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        function openLetter() {
+            document.querySelector('.envelope-wrapper').classList.add('open');
+            var audio = document.getElementById("bgMusic");
+            audio.play();
+        }
+    </script>
+
+</body>
+</html>
